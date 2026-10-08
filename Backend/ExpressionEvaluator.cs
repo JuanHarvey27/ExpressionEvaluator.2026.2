@@ -5,7 +5,7 @@ namespace Backend;
 
 public static class ExpressionEvaluator
 {
-    public static double Evalute(string infix) => EvalutePostfix(ToPostfix(infix));
+    public static double Evaluate(string infix) => EvaluatePostfix(ToPostfix(infix));
 
     private static string ToPostfix(string infix)
     {
@@ -80,7 +80,7 @@ public static class ExpressionEvaluator
 
     private static bool IsOperator(char item) => item == '^' || item == '*' || item == '/' || item == '+' || item == '-' || item == '(' || item == ')';
 
-    private static double EvalutePostfix(string postfix)
+    private static double EvaluatePostfix(string postfix)
     {
         var stack = new Stack<double>();
         foreach (var item in postfix)
