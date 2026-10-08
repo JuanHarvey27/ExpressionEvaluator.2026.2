@@ -106,4 +106,9 @@ public partial class Form1 : Form
     {
         txtDisplay.Text += $"={ExpressionEvaluator.Evaluate(txtDisplay.Text)}";
     }
+
+    private void btn5_Click(object sender, EventArgs e)
+    {
+        txtDisplay.Text += "5";
+    }
 }
