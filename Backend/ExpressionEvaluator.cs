@@ -75,7 +75,21 @@ public static class ExpressionEvaluator
 
     private static double EvaluatePostfix(List<string> postfix)
     {
-        return 0;
+        var stack = new Stack<double>();
+        foreach (var item in postfix)
+        {
+            if (item.Length == 1 && IsOperator(item[0]))
+            {
+                var ope2 = stack.Pop();
+                var ope1 = stack.Pop();
+                stack.Push(Calculate(ope1, ope2, item[0]));
+            }
+            else
+            {
+                stack.Push(double.Parse(item, CultureInfo.InvariantCulture));
+            }
+        }
+        return stack.Pop();
     }
 
     private static double Calculate(double ope1, double ope2, char item) => item switch
