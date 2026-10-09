@@ -1,5 +1,8 @@
 namespace Frontend.Windows;
 using Backend;
+using System.Globalization;
+using System.Linq.Expressions;
+
 public partial class Form1 : Form
 {
     public Form1()
@@ -7,22 +10,22 @@ public partial class Form1 : Form
         InitializeComponent();
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void btn7_Click(object sender, EventArgs e)
     {
         txtDisplay.Text += "7";
     }
 
-    private void button7_Click(object sender, EventArgs e)
+    private void btn6_Click(object sender, EventArgs e)
     {
         txtDisplay.Text += "6";
     }
 
-    private void button12_Click(object sender, EventArgs e)
+    private void btnClear_Click(object sender, EventArgs e)
     {
         txtDisplay.Text = string.Empty;
     }
 
-    private void button18_Click(object sender, EventArgs e)
+    private void btnPow_Click(object sender, EventArgs e)
     {
         txtDisplay.Text += "^";
     }
@@ -104,7 +107,8 @@ public partial class Form1 : Form
 
     private void btnResult_Click(object sender, EventArgs e)
     {
-        txtDisplay.Text += $"={ExpressionEvaluator.Evaluate(txtDisplay.Text)}";
+        double result = ExpressionEvaluator.Evaluate(txtDisplay.Text);
+        txtDisplay.Text += $"={result.ToString(CultureInfo.InvariantCulture)}";
     }
 
     private void btn5_Click(object sender, EventArgs e)

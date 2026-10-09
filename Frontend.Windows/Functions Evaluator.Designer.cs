@@ -71,7 +71,7 @@
             btn7.TabIndex = 1;
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = true;
-            btn7.Click += button1_Click;
+            btn7.Click += btn7_Click;
             // 
             // btn8
             // 
@@ -141,7 +141,7 @@
             btn6.TabIndex = 7;
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = true;
-            btn6.Click += button7_Click;
+            btn6.Click += btn6_Click;
             // 
             // btn5
             // 
@@ -200,7 +200,7 @@
             btnClear.TabIndex = 12;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
-            btnClear.Click += button12_Click;
+            btnClear.Click += btnClear_Click;
             // 
             // btn3
             // 
@@ -270,7 +270,7 @@
             btnPow.TabIndex = 18;
             btnPow.Text = "^";
             btnPow.UseVisualStyleBackColor = false;
-            btnPow.Click += button18_Click;
+            btnPow.Click += btnPow_Click;
             // 
             // btn0
             // 
