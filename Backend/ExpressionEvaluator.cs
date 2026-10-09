@@ -9,10 +9,46 @@ public static class ExpressionEvaluator
     {
         var postfix = new List<string>();
         var stack = new Stack<char>();
-        
+        for (int i = 0; i < infix.Length; i++)
+        {
+            char item = infix[i];
+            if (char.IsDigit(item) || item == '.')
+            {
+                string num = string.Empty;
+                while (i < infix.Length && (char.IsDigit(infix[i]) || infix[i] == '.'))
+                {
+                    num += infix[i++];
+                }
+                i--;
+                postfix.Add(num);
+            }
+            else if (IsOperator(item))
+            {
+                if (item == ')')
+                {
+                    while (stack.Count > 0 && stack.Peek() != '(')
+                    {
+                        postfix.Add(stack.Pop().ToString());
+                    }
+                    if (stack.Count > 0) stack.Pop();
+                }
+
+                else
+                {
+                    while (stack.Count > 0 && PriorityStack(stack.Peek()) >= PriorityInfix(item))
+                    {
+                        postfix.Add(stack.Pop().ToString());
+                    }
+                    stack.Push(item);
+                }
+            }
+        }
+        while (stack.Count > 0)
+        {
+            postfix.Add(stack.Pop().ToString());
+        }
         return postfix;
     }
- 
     private static int PriorityStack(char op) => op switch
     {
         '^' => 3,
