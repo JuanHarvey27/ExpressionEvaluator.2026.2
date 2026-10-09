@@ -7,7 +7,7 @@ public static class ExpressionEvaluator
 
     private static List<string> ToPostfix(string infix)
     {
-        var postfix = new List<string>();
+        var posfix = new List<string>();
         var stack = new Stack<char>();
         for (int i = 0; i < infix.Length; i++)
         {
@@ -20,7 +20,7 @@ public static class ExpressionEvaluator
                     num += infix[i++];
                 }
                 i--;
-                postfix.Add(num);
+                posfix.Add(num);
             }
             else if (IsOperator(item))
             {
@@ -28,7 +28,7 @@ public static class ExpressionEvaluator
                 {
                     while (stack.Count > 0 && stack.Peek() != '(')
                     {
-                        postfix.Add(stack.Pop().ToString());
+                        posfix.Add(stack.Pop().ToString());
                     }
                     if (stack.Count > 0) stack.Pop();
                 }
@@ -37,7 +37,7 @@ public static class ExpressionEvaluator
                 {
                     while (stack.Count > 0 && PriorityStack(stack.Peek()) >= PriorityInfix(item))
                     {
-                        postfix.Add(stack.Pop().ToString());
+                        posfix.Add(stack.Pop().ToString());
                     }
                     stack.Push(item);
                 }
@@ -45,9 +45,9 @@ public static class ExpressionEvaluator
         }
         while (stack.Count > 0)
         {
-            postfix.Add(stack.Pop().ToString());
+            posfix.Add(stack.Pop().ToString());
         }
-        return postfix;
+        return posfix;
     }
     private static int PriorityStack(char op) => op switch
     {
